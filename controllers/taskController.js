@@ -1,9 +1,12 @@
+const Task = require('../models/Task');
+const { StatusCodes } = require('http-status-codes');
 const getAllTasks = (req, res) => {
   res.send('get all tasks');
 };
 
-const createTask = (req, res) => {
-  res.send('create task');
+const createTask = async (req, res) => {
+  const task = await Task.create(req.body);
+  res.status(StatusCodes.CREATED).json({ task });
 };
 
 const updateTask = (req, res) => {

@@ -11,6 +11,7 @@ const taskRouter = require('./routes/taskRoute');
 
 // error handlers
 const notFoundMiddleware = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.json());
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use('/api/v1/tasks', taskRouter);
 
 app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
 
