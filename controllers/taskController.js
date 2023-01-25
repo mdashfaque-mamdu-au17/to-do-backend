@@ -23,7 +23,7 @@ const updateTask = async (req, res) => {
     params: { id: taskId },
   } = req;
 
-  if (name === '' || completed === '' || !name || !completed) {
+  if (name === '' || completed === '') {
     throw new BadRequestError(
       'Task name or completed fields cannot be empty'
     );
