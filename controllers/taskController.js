@@ -1,6 +1,6 @@
 const Task = require('../models/Task');
-
 const { StatusCodes } = require('http-status-codes');
+
 const getAllTasks = (req, res) => {
   res.send('get all tasks');
 };
