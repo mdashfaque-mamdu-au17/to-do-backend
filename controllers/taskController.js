@@ -54,8 +54,12 @@ const deleteTask = async (req, res) => {
 };
 
 const clearCompleted = async (req, res) => {
-  await Task.deleteMany({ completed: true });
-  res.send('clear all completed tasks');
+  const tasks = await Task.deleteMany({ completed: true });
+
+  if (!tasks) {
+    throw new NotFoundError(`No task with the id ${taskId}`);
+  }
+  res.status(StatusCodes.OK).send();
 };
 
 module.exports = {
